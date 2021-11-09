@@ -131,6 +131,7 @@ nmap <leader>w :w<CR>
 
 " Turn the word under cursor to uppercase
 nnoremap <c-u> <Esc>g~iw<Esc>
+inoremap <c-u> <Esc>g~iw<Esc>ea
 " Turn the current word into title case
 nnoremap <c-t> <Esc>b~lea<ESC>
 
