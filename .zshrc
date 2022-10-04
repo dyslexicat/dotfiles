@@ -1,4 +1,5 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -47,7 +48,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z zsh-autosuggestions zsh-completions osx zsh-abbr zsh-syntax-highlighting)
+plugins=(git z zsh-autosuggestions zsh-completions macos zsh-abbr zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -64,19 +65,12 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Setting ag as the default source for fzf
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# add flutter to the path
-export PATH="$PATH:/Users/alp/development/flutter/bin"
-
-# cocoapods to the path
-export GEM_HOME=$HOME/.gem
-export PATH="$GEM_HOME/ruby/2.6.0/bin:$PATH"
 
 # add homebrew to PATH
 # eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -84,8 +78,8 @@ export PATH="$GEM_HOME/ruby/2.6.0/bin:$PATH"
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
 export PATH="/Users/alp/.cargo/bin:$PATH"
-# aliases
-# started using zsh-abbr instead of alises (https://github.com/olets/zsh-abbr)
+
+# started using zsh-abbr instead of aliases (https://github.com/olets/zsh-abbr)
 
 pg() {
   if [[ $@ = "start" ]]; then

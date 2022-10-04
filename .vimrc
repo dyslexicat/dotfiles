@@ -57,8 +57,9 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 
 if has('nvim')
-    set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+    " set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
     set inccommand=nosplit
+    set guicursor=i:block
     noremap <C-q> :confirm qall<CR>
 end
 
@@ -67,6 +68,7 @@ end
 if !has('gui_running')
   set t_Co=256
 endif
+
 if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   " screen does not (yet) support truecolor
   set termguicolors
@@ -125,6 +127,22 @@ set ignorecase
 set smartcase
 set gdefault
 
+" Better completion
+" menuone: popup even when there's only one match
+" noinsert: Do not insert text until a selection is made
+" noselect: Do not select, force user to select one from the menu
+set completeopt=menuone,noinsert,noselect
+set cmdheight=2
+set updatetime=300
+
+" trying to make lightline work
+set laststatus=2
+set noshowmode
+" Decent wildmenu
+set wildmenu
+set wildmode=list:longest
+set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
+
 let mapleader="\<Space>"
 " Quick-save
 nmap <leader>w :w<CR>
@@ -135,22 +153,8 @@ inoremap <c-u> <Esc>g~iw<Esc>ea
 " Turn the current word into title case
 nnoremap <c-t> <Esc>b~lea<ESC>
 
-" Better completion
-" menuone: popup even when there's only one match
-" noinsert: Do not insert text until a selection is made
-" noselect: Do not select, force user to select one from the menu
-set completeopt=menuone,noinsert,noselect
-" Better display for messages
-set cmdheight=2
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
 " Disable autocomments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" trying to make lightline work
-set laststatus=2
-set noshowmode
 
 " Open new file adjacent to current file
 nnoremap <leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -162,6 +166,7 @@ nnoremap <leader><leader> <c-^>
 
 " jk sends an ESC command 
 inoremap jk <ESC>
+inoremap <C-c> <Esc>
 nnoremap <C-n> :NERDTreeToggle<CR>
 
 nnoremap <C-e> $
@@ -192,11 +197,6 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " Only underline the highlights instead of using custom colors.
 "highlight QuickScopePrimary gui=underline cterm=underline
 "highlight QuickScopeSecondary gui=underline cterm=underline
-
-" Decent wildmenu
-set wildmenu
-set wildmode=list:longest
-set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
 
 " Search results centered please
 nnoremap <silent> n nzz
