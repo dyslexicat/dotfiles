@@ -38,8 +38,8 @@ cmp.setup({
 		end, ]]
 	},
 	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
+		{ name = "nvim_lsp", keyword_length = 4 },
+		{ name = "luasnip", keyword_length = 4 },
 		{ name = "buffer", keyword_length = 5 },
 	},
 	formatting = {
