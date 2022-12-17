@@ -27,7 +27,8 @@ return require("packer").startup(function(use)
 
 	-- lsp
 	use("neovim/nvim-lspconfig")
-	use("williamboman/nvim-lsp-installer")
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 	use("hrsh7th/nvim-cmp") -- Autocompletion plugin
 	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
 	use("hrsh7th/cmp-buffer")
